@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Página Completa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* SEÇÃO DE DESTAQUE */
+    .highlight {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .highlight img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .highlight-content {
+      z-index: 1;
+      max-width: 800px;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+    }
+    .highlight h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .highlight p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .highlight a {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #ff5722;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .highlight a:hover {
+      background: #e64a19;
+    }
+
+    /* PORTFÓLIO */
+    .portfolio {
+      padding: 2rem;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    .portfolio h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+    .portfolio-item h3 {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      margin: 0;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* CONTATO */
+    .contact {
+      padding: 2rem;
+      background-color: #333;
+      color: white;
+      text-align: center;
+    }
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+    }
+    .contact-form textarea {
+      resize: none;
+      height: 120px;
+    }
+    .contact-form button {
+      background: #ff5722;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: #e64a19;
+    }
+    .contact-info {
+      margin-top: 2rem;
+    }
+    .social-links a {
+      margin: 0 0.5rem;
+      color: white;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Criando o header
+    const header = document.createElement("header");
+    const title = document.createElement("h1");
+    title.textContent = "Minha Página";
+    header.appendChild(title);
+
+    const nav = document.createElement("nav");
+    const links = ["Home", "Sobre", "Portfólio", "Contato"];
+    links.forEach(linkText => {
+      const link = document.createElement("a");
+      link.href = `#${linkText.toLowerCase()}`;
+      link.textContent = linkText;
+      nav.appendChild(link);
+    });
+    header.appendChild(nav);
+    document.body.prepend(header);
+
+    // Seção de Destaque
+    const highlightSection = document.createElement("section");
+    highlightSection.classList.add("highlight");
+    const highlightImg = document.createElement("img");
+    highlightImg.src = "https://via.placeholder.com/1920x1080";
+    highlightImg.alt = "Fundo de destaque";
+    highlightSection.appendChild(highlightImg);
+
+    const highlightContent = document.createElement("div");
+    highlightContent.classList.add("highlight-content");
+    highlightContent.innerHTML = `
+      <h1>Destaque o Seu Serviço</h1>
+      <p>Oferecemos as melhores soluções para você. Conheça mais sobre nossos serviços agora mesmo.</p>
+      <a href="#">Saiba Mais</a>
+    `;
+    highlightSection.appendChild(highlightContent);
+    document.body.appendChild(highlightSection);
+
+    // Seção de Portfólio
+    const portfolioSection = document.createElement("section");
+    portfolioSection.classList.add("portfolio");
+    portfolioSection.innerHTML = `
+      <h2>Portfólio em Destaque</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item"><img src="https://via.placeholder.com/300x200" alt="Projeto 1"><h3>Projeto 1</h3></div>
+        <div class="portfolio-item"><img src="https://via.placeholder.com/300x200" alt="Projeto 2"><h3>Projeto 2</h3></div>
+        <div class="portfolio-item"><img src="https://via.placeholder.com/300x200" alt="Projeto 3"><h3>Projeto 3</h3></div>
+        <div class="portfolio-item"><img src="https://via.placeholder.com/300x200" alt="Projeto 4"><h3>Projeto 4</h3></div>
+      </div>
+    `;
+    document.body.appendChild(portfolioSection);
+
+    // Seção de Contato
+    const contactSection = document.createElement("section");
+    contactSection.classList.add("contact");
+    contactSection.innerHTML = `
+      <h2>Entre em Contato</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Seu Nome" required>
+        <input type="email" placeholder="Seu E-mail" required>
+        <textarea placeholder="Sua Mensagem"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <div class="contact-info">
+        <p>Email: contato@example.com</p>
+        <p>Telefone: (11) 99999-9999</p>
+        <p>Endereço: Rua Exemplo, 123 - São Paulo, SP</p>
+        <div class="social-links">
+          <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(contactSection);
+  </script>
+</body>
+</html>
