@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "git": "^0.1.5",
+    "jsdom": "^25.0.1",
+    "node.js": "^0.0.1-security",
+    "react": "^19.0.0"
+  }
+}
